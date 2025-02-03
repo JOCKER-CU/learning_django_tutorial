@@ -4,7 +4,11 @@
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
     <div class="container">
+        {% if 'search' in request.path %}
+        <h2 class="title-page">Search Results for "{{request.GET.keyword}}"</h2>
+        {% else %}
         <h2 class="title-page">Our Store</h2>
+        {% endif %}
 
     </div> <!-- container //  -->
 </section>
@@ -126,6 +130,7 @@
                 </header><!-- sect-heading -->
 
                 <div class="row">
+                    {% if products %}
                     <!-- product -->
                     {% for product in products %}
                     <div class="col-md-4">
@@ -148,6 +153,11 @@
                     </div> <!-- col.// -->
                     {% endfor %}
                     <!-- product -->
+                    {% else %}
+                    <div class="col-md-12">
+                        <h3>No Products Found, Please Try Again.</h3>
+                    </div>
+                    {% endif %}
 
                 </div> <!-- row end.// -->
 
