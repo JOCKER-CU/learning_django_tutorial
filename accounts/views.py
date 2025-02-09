@@ -62,8 +62,8 @@ def register(request):
             result = send_email.send()
             print("Email send result:", result)
 
-            messages.success(request, 'Registration successful')
-            return redirect('register')
+            # messages.success(request, 'Thank you for registering with us. We have sent yo a verification email to you email address. Please verify it.')
+            return redirect('/accounts/login/?command=verification&email='+email)
         else:
             messages.error(request, 'Please fill out the form correctly')  # Only when form is invalid
     else:
@@ -81,7 +81,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now login')
-            return redirect('home')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Invalid login credentials')
             return redirect('login')
@@ -106,8 +106,13 @@ def activate(request, uidb64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
-        messages.success(request, "Your account has been activated. You can now log in.")
+        messages.success(request, "Congratulation!, Your account has been activated. You can now log in.")
         return redirect('login')
     else:
         messages.error(request, "Activation link is invalid!")
         return redirect('register')
+
+
+@login_required(login_url='login')
+def dashboard(request):
+    return render(request, 'accounts/dashboard.html')
