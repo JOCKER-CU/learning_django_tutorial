@@ -14,6 +14,7 @@
             </header>
             <form action="{% url 'register' %}" method="POST">
                 {% csrf_token %}
+
                 <div class="form-row">
                     <div class="col form-group">
                         <!-- {{ form.first_name.label_tag }} -->
@@ -58,8 +59,8 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> Register </button>
                 </div> <!-- form-group// -->
-{{ form.email.errors}}
-{{ form.non_field_errors }}
+<!-- {{ form.email.errors}}
+{{ form.non_field_errors }} -->
             </form>
         </article><!-- card-body.// -->
     </div> <!-- card .// -->

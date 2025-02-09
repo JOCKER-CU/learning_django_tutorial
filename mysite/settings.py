@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-rrtxx^o#m3%^s!g@60b*$4)y(=i=h0&^w3!#oo+(wg00zspq@r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 
 # Application definition
@@ -129,8 +130,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # STATIC_ROOT is for collectstatic in production
-STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Use a different folder for collected static files
-
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Use a different folder for collected static files
+ 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATICFILES_DIRS for development
 STATICFILES_DIRS = [
    'mysite/static',  # Use this for your static files in development
@@ -157,3 +159,16 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',
 }
+
+
+
+# smtp configuration
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Use your SMTP provider
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = 'hannaungsoe2@gmail.com'
+# gwmo dfms ygry ynxn
+EMAIL_HOST_PASSWORD = 'gwmo dfms ygry ynxn'  
